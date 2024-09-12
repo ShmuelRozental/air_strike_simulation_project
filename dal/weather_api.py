@@ -29,14 +29,14 @@ def get_weather(city_name, api_key):
     if response.status_code == 200:
         try:
             # Extracting relevant data from the response
-            temperature = data['main']['temp']
-            weather_description = data['weather'][0]['description']
+            weather_main = data['weather'][0]['main']
             cloud_percentage = data['clouds']['all']
+            speed_wind = data['wind']['speed']
 
             return {
-                "temperature": temperature,
-                "weather_description": weather_description,
-                "cloud_percentage": cloud_percentage
+                "weather_main": weather_main,
+                "cloud_percentage": cloud_percentage,
+                "speed_wind": speed_wind
             }
         except KeyError:
             print("Error: Unexpected response format.")
