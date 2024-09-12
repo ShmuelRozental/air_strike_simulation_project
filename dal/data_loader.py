@@ -2,7 +2,7 @@ import json
 from models.pilot import Pilot
 from models.plane import Plane
 from models.target import Target
-from dal.weather_api import get_lat_lon  # Assuming get_lat_lon is in the api/weather.py file
+from dal.weather_api import get_lat_lon
 
 def load_entities_from_json(file_path, entity_type, api_key=None):
     with open(file_path, 'r') as file:

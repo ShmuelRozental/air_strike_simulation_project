@@ -1,4 +1,5 @@
 from dal.data_loader import load_entities_from_json
+from  dal.weather_api import get_weather
 from services.plane_service import calculate_plane_scores
 
 planes = load_entities_from_json('jsons/aircrafts.json', 'aircrafts')
@@ -19,3 +20,8 @@ for target in targets:
 scored_planes = calculate_plane_scores(planes)
 for plane, score in scored_planes:
     print(f'{plane.model}: Score = {score:.2f}')
+
+
+
+for target in targets:
+    print(get_weather(target.city_name, api_key) )
