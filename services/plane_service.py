@@ -11,14 +11,12 @@ def calculate_plane_scores(planes):
     fuel_capacity_weight = 0.4
 
     # Calculate scores for each plane
-    scores = []
+
     for plane in planes:
         normalized_speed = plane.speed / max_speed
         normalized_fuel_capacity = plane.fuel_capacity / max_fuel_capacity
 
         score = (normalized_speed * speed_weight) + (normalized_fuel_capacity * fuel_capacity_weight)
-        scores.append((plane, score))
-
-    return scores
+        plane.plane_score = score
 
 

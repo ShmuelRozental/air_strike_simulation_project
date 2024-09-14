@@ -1,15 +1,17 @@
-import json
+from datetime import datetime, timedelta
+
 
 def get_weather_for_city_at_time(weather_data, target_time):
-
     for entry in weather_data['list']:
-        if entry['dt_txt'] == target_time:
+        entry_time = datetime.strptime(entry['dt_txt'], "%Y-%m-%d %H:%M:%S")
+        if entry_time == target_time:
             clouds_all = entry['clouds']['all']
             weather_main = entry['weather'][0]['main']
             wind_speed = entry['wind']['speed']
             return {
                 "clouds": clouds_all,
-                "weather": weather_main
+                "weather_main": weather_main,
+                "wind_speed":wind_speed
             }
     return None
 
